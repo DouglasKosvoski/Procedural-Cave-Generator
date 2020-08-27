@@ -1,6 +1,6 @@
 """
+Douglas Kosvoski
 Procedural cave generator using python3 and pygame
-
 https://en.wikipedia.org/wiki/Marching_squares
 """
 
@@ -21,21 +21,14 @@ def generate_points():
             sub_list.append(Point(i,j))
         __pontos.append(sub_list)
     return __pontos
-    
+
 def draw_points(points_list):
     for i in range(len(points_list)):
         for j in range(len(points_list[0])):
             points_list[i][j].draw(display.canvas)
-        
-def show_matrix(lista, br):
-    for i in range(0, len(lista)):
-        print("[{0} {1}]".format(lista[i].x, lista[i].y), end=' ')
-        # print('[', lista[i].x, lista[i].y, end='] ')
-        if i%br == 0 and i!=(br-1) and i!=0:
-            print()
 
 def draw_line(p1, p2):
-    line_color = (0, 255, 0)
+    line_color = (55, 255, 87)
     line_width = 2
     pygame.draw.line(display.canvas, line_color, [p1[0], p1[1]], [p2[0], p2[1]], line_width)
 
@@ -47,19 +40,17 @@ def draw_cave(lista):
         for j in range(len(lista[0])-1):
             x = i * display.step
             y = j * display.step
-            
-            a = x + display.step / 2,   y
-            b = x + display.step,       y + display.step * 0.5
+
+            a = x + display.step / 2, y
+            b = x + display.step, y + display.step * 0.5
             c = x + display.step * 0.5, y + display.step
-            d = x,              y + display.step * 0.5
-            
+            d = x, y + display.step * 0.5
+
             p1 = lista[i][j]
             p2 = lista[i+1][j]
             p3 = lista[i+1][j+1]
             p4 = lista[i][j+1]
             state = get_state(p1, p2, p3, p4)
-
-            
 
             if state == 0:
                 pass
@@ -93,19 +84,16 @@ def draw_cave(lista):
                 draw_line(b,c)
             elif state == 14:
                 draw_line(d,c)
-            elif state == 15:
-                pass
             else:
-                print("deu ruim")
-                
-# display.background()
-# display.draw_grid()
+                pass
+
+display.background()
 lista = generate_points()
 draw_points(lista)
+# draw the contour of the cave
 draw_cave(lista)
 
-
-while True:    
+while True:
     event.manage()
     display.clock.tick(60)
     display.update()
