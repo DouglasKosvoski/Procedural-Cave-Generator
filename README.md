@@ -4,6 +4,8 @@
 Gerador Procedural de Cavernas 2D (bidimensional), desenvolvido como projeto pessoal, utilizando o algoritmo [Marching Squares](https://en.wikipedia.org/wiki/Marching_squares) implementado com a linguagem de programação Python 3 e o framework gráfico PyGame, que utiliza uma matriz de duas dimensões em um espaço escalar, para gerar valores numéricos individuais e traçar um contorno entre eles gerando assim um aspecto que se assemelha a cavernas. Calculando primeiramente cada célula do vetor como um indivíduo independente e comparando o aos seus vizinhos na matriz para assim gerar um contorno condizente.
 
 
+![image example](image_example.png)
+
 ## Para utilizar o programa
 
 ### 1. Instalação de dependências
@@ -16,7 +18,7 @@ https://github.com/DouglasKosvoski/Procedural_Cave_Generator.git
 Instala interpretador Python:
 
 ```
-apt get install python3.8.5
+apt-get install python3.8.5
 ```
 
 Instala Framework gráfico PyGame:
@@ -36,5 +38,5 @@ cd Procedural_Cave_Generator
 
 e dentro do repositório rode o arquivo "main.py"
 ```
-python main.py
+python3 main.py
 ```
