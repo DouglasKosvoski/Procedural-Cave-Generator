@@ -11,7 +11,7 @@ class Canvas:
         self.grid_color = (0, 250, 0)
 
         # the greater this number the more detail the map will contain
-        self.gap = 48 #subdivisoes
+        self.gap = 46 #subdivisoes
         self.step = int(self.resolution[0]/self.gap)
 
     def background(self):

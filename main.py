@@ -14,11 +14,12 @@ event = Event_handler()
 display = Canvas()
 ms = MarchingSquares(display)
 
-
 display.background()
 lista = ms.generate_points()
+# lista = ms.remove_alone_points(lista)
 ms.draw_points(lista)
 ms.draw_cave(lista)
+
 
 while True:
     event.manage()

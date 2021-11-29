@@ -20,13 +20,37 @@ class MarchingSquares:
             for j in range(len(points_list[0])):
                 points_list[i][j].draw(self.canvas.canvas)
 
+    def remove_alone_points(self, points_list):
+        for i in range(len(points_list) - 1):
+            for j in range(len(points_list[0]) - 1):
+                if points_list[i][j].value == 0:
+                    neighbours = 0
+                    if points_list[i-1][j].value != 1:
+                        neighbours += 1
+                    if points_list[i][j-1].value != 1:
+                        neighbours += 1
+                    if points_list[i+1][j].value != 1:
+                        neighbours += 1
+                    if points_list[i][j+1].value != 1:
+                        neighbours += 1
+
+                    if neighbours < 1:
+                        points_list[i][j].value = 1
+                    print(i,j,neighbours)
+
+                    continue
+
+
+        return points_list
+
+
     def draw_line(self, p1, p2):
         line_color = (55, 255, 87)
         line_width = 2
         pygame.draw.line(self.canvas.canvas, line_color, [p1[0], p1[1]], [p2[0], p2[1]], line_width)
 
     def get_state(self, a, b, c, d):
-        return ((a.value*8) + (b.value*4) + (c.value*2) + (d.value*1))
+        return (abs(a.value*8) + abs(b.value*4) + abs(c.value*2) + abs(d.value*1))
 
     def draw_cave(self, lista):
         for i in range(len(lista)-1):

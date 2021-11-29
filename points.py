@@ -16,7 +16,9 @@ class Point():
         __c1 = (0,0,0)
         __c2 = (85, 80, 210)
 
-        if self.value == 0:
+        if self.value == -1:
+            pygame.draw.circle(display, (255,0,0), [self.x, self.y], self.radius, self.width)
+        elif self.value == 0:
             pygame.draw.circle(display, __c2, [self.x, self.y], self.radius, self.width)
         else:
             pygame.draw.circle(display, __c1, [self.x, self.y], self.radius, self.width)
